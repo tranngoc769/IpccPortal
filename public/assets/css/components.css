@@ -1,0 +1,289 @@
+.btn {
+    border-radius: 2px;
+    padding: 6px 14px;
+}
+
+.btn-group .btn+.btn,
+.btn-group .btn+.btn-group,
+.btn-group .btn-group+.btn,
+.btn-group .btn-group+.btn-group {
+    margin-left: 0px;
+}
+
+.btn-group.open .dropdown-toggle {
+    -webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.1) inset;
+}
+
+.btn-primary {
+    color: #ffffff !important;
+}
+
+.btn-default {
+    background-color: rgba(218, 230, 236, 0.3);
+    border: 1px solid #54657e;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.btn-default.focus,
+.btn-default:active,
+.btn-default:focus,
+.btn-default:hover,
+.open>.dropdown-toggle.btn-default {
+    background-color: rgba(218, 230, 236, 0.5) !important;
+    border: 1px solid rgba(218, 230, 236, 0.7) !important;
+    /* background-color: #fff;
+    border: none */
+}
+
+.btn-primary {
+    padding: 8px 36px !important;
+    border-radius: 4px;
+    background-color: #673ab7;
+    border: 1px solid #673ab7 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover,
+.open>.dropdown-toggle.btn-primary {
+    background-color: #673ab7 !important;
+    border: 1px solid #673ab7 !important;
+}
+
+
+/* File Upload */
+
+.fileupload {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileupload input.upload {
+    cursor: pointer;
+    filter: alpha(opacity=0);
+    font-size: 20px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+/* Inbox-widget */
+
+.inbox-widget .inbox-item {
+    border-right: 3px solid #fff;
+    cursor: pointer;
+    /* border-bottom: 1px solid #e7ebf3; */
+    overflow: hidden;
+    padding: 10px 8px 5px;
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+}
+
+.inbox-widget .inbox-item .inbox-item-img,.inbox-item-checkbox {
+    /* display: inline-block;
+    float: left; */
+    margin-right: 8px;
+    width: 38px;
+}
+.inbox-item-body{
+    display: inline-flex;
+    /* float: left; */
+    width: 100%;
+    position: relative;
+}
+.inbox-item-checkbox{
+    width: 22px;
+    margin-top: 11px;
+}
+.inbox-item-checkbox .custom-checkbox .container{
+    transform: scale(0.75);
+}
+.inbox-item-checkbox .custom-checkbox .checkmark{
+    border: 2px solid #8a8a8a;
+}
+.inbox-widget .inbox-item .inbox-item-img .avatar {
+    border-radius: 5px;
+    background-color: rgba(103, 58, 183, 0.5);
+    border: solid 2px #ffffff;
+}
+
+.inbox-widget .inbox-item .inbox-item-img h5.avatar {
+    height: 38px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    padding: 10px 0;
+    margin: 0px;
+    text-transform: uppercase;
+}
+
+.inbox-widget .inbox-item img {
+    width: 40px;
+}
+
+.inbox-widget .inbox-item .inbox-item-img-show {
+    float: right;
+    position: absolute;
+    right: 0;
+    /* top: 10px; */
+}
+.sms-icon{
+    right: 32px !important
+}
+.inbox-widget .inbox-item .inbox-item-author {
+    font-size: 14px;
+    color: #54657e;
+    margin: 0;
+}
+
+.inbox-widget .inbox-item .inbox-item-text {
+    color: #98a6ad;
+    font-size: 12px;
+    margin: 0;
+}
+
+.inbox-widget .inbox-item .inbox-item-text-red {
+    color: #ea4663;
+    font-size: 12px;
+    margin: 0;
+}
+
+.inbox-widget .inbox-item .inbox-item-text img {
+    width: 18px;
+    margin-bottom:3px;
+}
+
+.inbox-widget .inbox-item .inbox-item-text-red img {
+    width: 18px;
+    margin-bottom:3px;
+}
+
+.inbox-widget .inbox-item .calllog-time{
+    /* float: right; */
+    margin-left: 10px;
+    display: -webkit-box;
+    position: absolute;
+    right: 0;
+}
+.inbox-widget .inbox-item .calllog-date {
+    margin-bottom: 0px;
+}
+.inbox-widget .inbox-item .inbox-item-date {
+    font-size: 12px;
+    color: #8190b0;
+    position: absolute;
+    right: 7px;
+    top: 2px;
+}
+
+.inbox-widget .active {
+    border-right: 3px solid #673ab7;
+    background-color: #ecedf4;
+}
+
+.inbox-item:hover img {
+    opacity: 1;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    background: #ecedf4;
+}
+.inbox-item:hover .calllog-time{
+    opacity: 0!important;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+.inbox-item .show-img {
+    cursor: pointer;
+    margin: 3px 0;
+    text-align: right;
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+
+.inbox-item img.show-img {
+    position: absolute;
+    /* left: 276px; */
+    right: 14px;
+    width: 26px;
+    height: 26px;
+}
+
+.inbox-widget .inbox-item .inbox-item-content {
+    display: inline-block;
+}
+
+.inbox-item:hover {
+    border-right: 3px solid #673ab7;
+    color: #71b6f9 !important;
+    background-color: #ecedf4;
+}
+
+.inbox-item.active {
+    border-right: 3px solid #673ab7;
+    color: #71b6f9 !important;
+    background-color: #ecedf4;
+}
+
+.inbox-widget .inbox-item-img .label {
+    font-weight: bold;
+    position: absolute;
+    top: -7px;
+    left: -4px;
+    right: 0px !important;
+    line-height: 3px;
+    padding: 7px 0px;
+    border-radius: 50em;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #fff;
+}
+
+.label-primary {
+    color: white;
+    background-color: #0dcfda;
+}
+.bootstrap-select .actions-btn{
+    background-color:unset;
+    border:unset;
+}
+#table-contact-field tr{
+    cursor: move;
+}
+#table-contact-field tr i{
+    cursor: pointer;
+    font-size: 15px;
+}
+.modal .custom-checkbox .checkmark{
+    height: 18px;
+    width: 18px
+}
+
+.modal .custom-checkbox .container .checkmark:after{
+    left: 5px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border-width: 0 2px 2px 0;
+}
+.modal-body .div-btn .btn{
+    padding:6px 20px !important;
+}

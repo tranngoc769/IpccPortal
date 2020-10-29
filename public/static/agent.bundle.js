@@ -1,0 +1,2 @@
+$(".activity").on("click", "#button-filter-advance,.popup-filter .btn-default", function() { return $(".popup-filter").hasClass("show") ? $(".popup-filter").removeClass("show") : $(".popup-filter").addClass("show"), !1 })
+$(".activity-contact").on("click", "#btn-show-filter", function() { $("#div-filter").hasClass("hidden") ? $("#div-filter").removeClass("hidden") : $("#div-filter").addClass("hidden") })

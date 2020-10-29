@@ -1,0 +1,812 @@
+.disabled {
+  opacity: 0.9;
+  cursor: not-allowed !important;
+}
+.callbox-container{
+  position: fixed;
+  z-index: 1000;
+}
+.sipform {
+  position: fixed;
+  width: 280px;
+  height: 504px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-image: url(../img/background-sipform.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100% 16%;
+  background-color: #f9fafe;
+  overflow: hidden;
+  margin-right: 20px;
+  border-radius: 6px;
+  z-index: 10000000000;
+  bottom: 0;
+  left: 0;
+  padding: 16px 20px 0 20px;
+}
+.sipform .closeform {
+  text-align: center;
+  width: 100%;
+}
+.sipform .closeform a, .sipform .closeform a:hover {
+  color: #ffffff !important;
+  font-size: 21px;
+}
+.sipform .header h3{
+  font-size: 30px;
+  margin-top: 29px;
+}
+.sipform .contact p{
+  font-size: 14px;
+}
+.sipform .form-control {
+  border-color: #673ab7;
+  opacity: 0.5;
+  border-radius: 3px;
+  width: 252px;
+  height: 40px;
+}
+.sipform .submit {
+  text-align: center;
+}
+.sipform .submit button {
+  width: 200px;
+  height: 50px;
+  border-radius: 100px;
+  border: none;
+  background-color: #673ab7;
+  font-size: 14px;
+  color: #f9fafe;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24);
+}
+.sipform .error {
+  color: red;
+  height: 20px;
+  font-style: italic;
+}
+
+.dial-icon {
+  background-color: #673ab7;
+  background-position: center;
+  background-size: cover;
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  border: 0;
+  /* overflow: hidden; */
+  padding: 0;
+  z-index: 100000000;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24);
+}
+.dial-icon-connected {
+  background-image: url(../img/dialicon.png);
+}
+.dial-icon-disconnected {
+  background-image: url(../img/dialicon-disconnect.png);
+}
+.dial-icon-disconnected:hover::before {
+  width: 194px;
+  height: 64px;
+  background-color: #f9fafe;
+  border: solid 1px #e6ebf3;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24);
+  color: #34495e;
+  font-size: 12px;
+  position: absolute;
+  top: 5px;
+  left: 120%;
+  padding: 14px;
+  text-align: left;
+}
+.dial-icon-disconnected-vi:hover::before {
+  content: "Bạn chưa có tài khoản SIP. Vui lòng liên hệ admin.";
+}
+.dial-icon-disconnected-en:hover::before {
+  content: "You don’t have a SIP account. Please contact with admin.";
+}
+
+.dial-pad {
+  position: fixed;
+  width: 280px;
+  height: 504px;
+  z-index: 10000000000;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  margin-right: 20px;
+  border-radius: 6px;
+  padding: 16px 20px 0 20px;
+  background-color: #673AB7;
+}
+.dial-pad .close-dialpad {
+  text-align: center;
+  width: 100%;
+}
+.dial-pad .close-dialpad a {
+  color: #fff !important;
+  font-size: 21px;
+}
+.dial-pad .input-control {
+  border-bottom: 1px solid #fff;
+  padding: 8px 0;
+  border-color: rgba(255, 255, 255, 0.57);
+}
+.dial-pad .input-control .setting {
+  display: inline-block;
+  opacity: 0;
+}
+.dial-pad .input-control .setting button {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  position: relative;
+}
+.dial-pad .input-control .setting button img {
+  width: 100%;
+}
+.dial-pad .input-control .setting button ul.actions {
+  display: none;
+  position: absolute;
+  top: 160%;
+  left: -8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  width: 99px;
+  border-radius: 3px;
+  background-color: white;
+}
+.dial-pad .input-control .setting button ul.actions li {
+  padding: 5px;
+}
+.dial-pad .input-control .setting button ul.actions li:hover {
+  background-color: #54657e;
+  color: white;
+}
+.dial-pad .input-control .setting button ul.actions::before {
+  content: "";
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid white;
+  position: absolute;
+  bottom: 100%;
+  left: 14px;
+}
+.dial-pad .input-control .setting button.open ul.actions {
+  display: block;
+}
+.dial-pad .input-control input {
+  height: 28px;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  font-size: 19px;
+  width: 81%;
+  caret-color: white;
+  overflow: hidden;
+  color: white;
+}
+.dial-pad .input-control .del {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  height: 17px;
+}
+.dial-pad .input-control .del img {
+  height: 100%;
+}
+.dial-pad .keyboard {
+  padding: 0 0 20px;
+}
+.dial-pad .no-error {
+  color: transparent;
+  padding: 10px 0;
+}
+.dial-pad .has-error {
+  color: #ffffff;
+  padding: 10px 0;
+  text-align: center;
+}
+.dial-pad .keyboard button {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 0;
+  background-size: 135%;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* border: 1px solid white; */
+  border-radius: 100%;
+  margin: 8px 8px;
+}
+.dial-pad .keyboard .row {
+  text-align: center;
+}
+.dial-pad .keyboard .row:nth-child(1) button:nth-child(1){
+  background-image: url(../img/1.png);
+}
+.dial-pad .keyboard .row:nth-child(1) button:nth-child(2){
+  background-image: url(../img/2.png);
+}
+.dial-pad .keyboard .row:nth-child(1) button:nth-child(3){
+  background-image: url(../img/3.png);
+}
+.dial-pad .keyboard .row:nth-child(2) button:nth-child(1){
+  background-image: url(../img/4.png);
+}
+.dial-pad .keyboard .row:nth-child(2) button:nth-child(2){
+  background-image: url(../img/5.png);
+}
+.dial-pad .keyboard .row:nth-child(2) button:nth-child(3){
+  background-image: url(../img/6.png);
+}
+.dial-pad .keyboard .row:nth-child(3) button:nth-child(1){
+  background-image: url(../img/7.png);
+}
+.dial-pad .keyboard .row:nth-child(3) button:nth-child(2){
+  background-image: url(../img/8.png);
+}
+.dial-pad .keyboard .row:nth-child(3) button:nth-child(3){
+  background-image: url(../img/9.png);
+}
+.dial-pad .keyboard .row:nth-child(4) button:nth-child(1){
+  background-image: url(../img/*.png);
+}
+.dial-pad .keyboard .row:nth-child(4) button:nth-child(2){
+  background-image: url(../img/0.png);
+}
+.dial-pad .keyboard .row:nth-child(4) button:nth-child(3){
+  background-image: url(../img/sharp.png);
+}
+.dial-pad .call {
+  text-align: center;
+}
+.dial-pad .call.has-error {
+  opacity: 0.6;
+}
+.dial-pad .call button {
+  width: 200px;
+  height: 50px;
+  border-radius: 100px;
+  border: none;
+  background-color: #31D68B;
+  background-image: url(../img/call.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 55%;
+  box-shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.5);
+}
+
+.in-call {
+  position: fixed;
+  width: 280px;
+  height: 504px;
+  z-index: 10000000000;
+  bottom: 0;
+  left: 311px;
+  overflow: hidden;
+  margin-right: 20px;
+  border-radius: 6px;
+  padding: 16px 20px 0 20px;
+  background-color: #673AB7;
+  color: white;
+  -webkit-transition: all 400ms;
+     -moz-transition: all 400ms;
+       -o-transition: all 400ms;
+          transition: all 400ms;
+}
+.in-call .speaking {
+  height: 100%;
+}
+.in-call button.contact-info,.waiting button.contact-info {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background-size: 100%;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  position: absolute;
+  top: 7px;
+}
+.in-call button.fast-view-contact ,.waiting button.fast-view-contact{
+  background-image: url(../img/info.png);
+}
+.in-call button.fast-create-contact{
+  background-image: url(../img/fast-create-contact.png);
+}
+.in-call .boards {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.in-call .main-action {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.in-call.mini {
+  height: 75px;
+  padding: 0;
+}
+.in-call .mini-control {
+  display: none;
+  padding: 10px 23px;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: all 800ms;
+     -moz-transition: all 800ms;
+       -o-transition: all 800ms;
+          transition: all 800ms;
+}
+.in-call .keypad-board, .in-call .forward-board {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: none;
+}
+.in-call.keypad .main-action, .in-call.forward .main-action{
+  left: -120%;
+}
+.in-call.keypad .keypad-board, .in-call.forward .forward-board{
+  display: block;
+}
+.in-call .input-control {
+  border-bottom: 1px solid #fff;
+  padding: 8px 0;
+  border-color: rgba(255, 255, 255, 0.57);
+  position: relative;
+}
+.in-call .input-control input {
+  height: 28px;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  font-size: 19px;
+  width: 82%;
+  caret-color: white;
+  overflow: hidden;
+  color: white;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.in-call .input-control .del {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  height: 17px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.in-call .input-control .del img {
+  height: 100%;
+  vertical-align: top;
+}
+.in-call .keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 17px;
+}
+.in-call .keyboard button {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  background-size: 135%;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* border: 1px solid white; */
+  border-radius: 100%;
+  margin: 8px 8px;
+}
+.in-call .keyboard button:nth-child(1){
+  background-image: url(../img/1.png);
+}
+.in-call .keyboard button:nth-child(2){
+  background-image: url(../img/2.png);
+}
+.in-call .keyboard button:nth-child(3){
+  background-image: url(../img/3.png);
+}
+.in-call .keyboard button:nth-child(4){
+  background-image: url(../img/4.png);
+}
+.in-call .keyboard button:nth-child(5){
+  background-image: url(../img/5.png);
+}
+.in-call .keyboard button:nth-child(6){
+  background-image: url(../img/6.png);
+}
+.in-call .keyboard button:nth-child(7){
+  background-image: url(../img/7.png);
+}
+.in-call .keyboard button:nth-child(8){
+  background-image: url(../img/8.png);
+}
+.in-call .keyboard button:nth-child(9){
+  background-image: url(../img/9.png);
+}
+.in-call .keyboard button:nth-child(10){
+  background-image: url(../img/*.png);
+}
+.in-call .keyboard button:nth-child(11){
+  background-image: url(../img/0.png);
+}
+.in-call .keyboard button:nth-child(12){
+  background-image: url(../img/sharp.png);
+}
+.in-call .call {
+  text-align: center;
+  display: flex;
+  display: -webkit-flex;
+  padding: 0 25px;
+}
+.in-call .forward-board .call {
+  padding: 0;
+}
+.in-call .call button {
+  width: 200px;
+  height: 50px;
+  border-radius: 100px;
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 22%;
+  box-shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.5);
+  flex-grow: 1;
+  margin: 0 5px;
+}
+.in-call .forward-board .call button {
+  background-size: 40%;
+}
+.in-call .call button:nth-child(1) {
+  background-color: #fff;
+  background-image: url(../img/back.png);
+}
+.in-call .call button:nth-child(2) {
+  background-color: #4cd964;
+  background-image: url(../img/forward.png);
+}
+.in-call .wide-control {
+  display: block;
+  height: 100%;
+  -webkit-transition: all 800ms;
+     -moz-transition: all 800ms;
+       -o-transition: all 800ms;
+          transition: all 800ms;
+}
+.in-call.mini .wide-control {
+  display: none;
+  height: 100%;
+}
+.in-call.mini .mini-control {
+  display: block;
+}
+.in-call .hide-incall,.waiting .hide-incall {
+  text-align: center;
+  width: 100%;
+}
+.in-call .hide-incall a,.waiting .hide-incall a {
+  color: #fff !important;
+  font-size: 21px;
+}
+.in-call.keypad .hide-incall a, .in-call.forward .hide-incall a{
+  color: transparent !important;
+  pointer-events: none;
+}
+.in-call .header {
+  text-align: center;
+}
+.in-call .waiting {
+  position: relative;
+  height: 100%;
+}
+.in-call .waiting .header {
+  position: relative;
+  top: 33%;
+}
+.in-call .waiting .DID {
+  text-align: center;
+  font-size:16px;
+}
+.in-call .waiting .header .name {
+  font-size: 22px;
+}
+.in-call .waiting .header .phone {
+  font-size: 18px;
+}
+.in-call .waiting .call-footer {
+  position: absolute;
+  bottom: 16px;
+  width: 100%;
+  padding: 0 21px;
+}
+.in-call .waiting .call-footer button {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  background-size: 50%;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+}
+.in-call .waiting .call-footer button:nth-child(1) {
+  background-image: url(../img/call.png);
+  background-color: #4cd964;
+}
+.in-call .waiting .call-footer button:nth-child(2) {
+  background-image: url(../img/call-end.png);
+  background-color: #db1b30;
+  float: right;
+}
+.in-call .speaking .header .name {
+  font-size: 22px;
+}
+.in-call .speaking .header .phone {
+  font-size: 18px;
+}
+.in-call .speaking .header .groups {
+  font-size: 14px;
+}
+.in-call .speaking .header .groups .item-groups,.waiting .header .groups .item-groups{
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  white-space: pre;
+}
+.in-call .speaking .header .status {
+  margin-top:27px;
+  font-size: 14px;
+}
+.in-call .control {
+  position: absolute;
+  top: 194px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.in-call .control .row {
+  text-align: center;
+  margin-bottom: 19px;
+}
+.in-call .control button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background-size: 103%;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid white;
+  border-radius: 100%;
+  margin: 8px 11px;
+  color: rgba(255, 255, 255, 0.67);
+  font-size: 12px;
+}
+.in-call .control button::before {
+  top: 40px;
+  position: relative;
+}
+.in-call .control .row:nth-child(1) button:nth-child(1) {
+  background-image: url(../img/mute.png);
+}
+.in-call .control .row:nth-child(1) button:nth-child(1)::before {
+  content: "mute";
+}
+.in-call .control .row:nth-child(1) button:nth-child(2) {
+  background-image: url(../img/keypad.png);
+}
+.in-call .control .row:nth-child(1) button:nth-child(2)::before {
+  content: "keypad";
+}
+.in-call .control .row:nth-child(1) button:nth-child(3) {
+  background-image: url(../img/pause.png);
+}
+.in-call .control .row:nth-child(1) button:nth-child(3)::before {
+  content: "pause";
+}
+.in-call .control .row:nth-child(1) button:nth-child(4) {
+  background-image: url(../img/forward.png);
+}
+.in-call .control .row:nth-child(1) button:nth-child(4)::before {
+  content: "forward";
+}
+.in-call .control button.mute {
+  background-image: url(../img/unmute.png) !important;
+  background-color: #fff;
+}
+.in-call .control button.speaker {
+  background-image: url(../img/unspeaker.png) !important;
+  background-color: #fff;
+}
+.in-call .control button.pause {
+  background-image: url(../img/play.png) !important;
+  background-color: #fff;
+}
+.in-call .speaking .call-footer {
+  text-align: center;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.in-call .speaking .call-footer button {
+  width: 88px;
+  height: 50px;
+  border-radius: 100px;
+  border: none;
+  background-color: #E91E63;
+  background-image: url(../img/call-end.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 55%;
+  box-shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.5);
+}
+.in-call .mini-control .left-side {
+  width: 54%;
+  text-align: left;
+  display: inline-block;
+  overflow: hidden;
+}
+.in-call .mini-control .left-side * {
+  margin: 0;
+}
+.in-call .mini-control .left-side .name {
+  font-size: 20px;
+}
+.in-call .mini-control .left-side .status {
+  font-size: 14px;
+}
+.in-call .mini-control .right-side {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.in-call .mini-control .right-side button {
+  margin-left: 13px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 100%;
+}
+.in-call .mini-control .right-side button:nth-child(1) {
+  background-image: url(../img/info.png);
+}
+.in-call .mini-control .right-side button:nth-child(2) {
+  background-image: url(../img/pause-small.png);
+}
+.in-call .mini-control .right-side button:nth-child(3) {
+  background-image: url(../img/call.png);
+  background-color: #E91E63;
+  background-size: 50%;
+}
+.in-call .mini-control .right-side .accept-call{
+  background-image: url(../img/call.png) !important;
+  background-color: #4cd964;
+  background-size: 50%;
+}
+.in-call .mini-control .right-side button.pause {
+  background-image: url(../img/play.png) !important;
+  background-color: #fff;
+}
+
+.intergrated-container {
+  position: fixed;
+  z-index: 1000000;
+  background-color: #fff;
+  right: 35px;
+  bottom: 35px;
+  width: 500px;
+  height: 400px;
+  box-shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.5);
+  transform-origin: bottom right;
+  -webkit-transition: all 175ms ease-in-out;
+     -moz-transition: all 175ms ease-in-out;
+       -o-transition: all 175ms ease-in-out;
+          transition: all 175ms ease-in-out;
+}
+.intergrated-container.small-frame {
+  -webkit-transform: scale(0.2);
+     -moz-transform: scale(0.2);
+      -ms-transform: scale(0.2);
+       -o-transform: scale(0.2);
+          transform: scale(0.2);
+}
+.intergrated-container.small-frame .zoom-frame, .intergrated-container.small-frame .external-link {
+  display: none;
+}
+.intergrated-container.small-frame .close-frame {
+  -webkit-transform: scale(4);
+     -moz-transform: scale(4);
+      -ms-transform: scale(4);
+       -o-transform: scale(4);
+          transform: scale(4);
+}
+.intergrated-container.small-frame .ontop {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  cursor: pointer;
+}
+.intergrated-container .ontop {
+  display: none;
+}
+.intergrated-container .zoom-frame, .intergrated-container .external-link {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: 100%;
+  padding: 5px;
+  background-color: inherit;
+}
+.intergrated-container .external-link {
+  left: 30px;
+}
+.intergrated-container .external-link img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.intergrated-container .zoom-frame div {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  background-color: #673AB7;
+  border-radius: 100%;
+  font-size: 26px;
+  color: #fff;
+  line-height: 14px;
+  transition: all 200ms ease-in-out;
+}
+.intergrated-container .close-frame {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  background-color: red;
+  border-radius: 100%;
+  transform: translate(50%, 50%);
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  line-height: 10px;
+  transition: all 200ms ease-in-out;
+  z-index: 1000;
+}
+.intergrated-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

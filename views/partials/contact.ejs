@@ -1,0 +1,244 @@
+<div class="contact">
+    <div class="topbar">
+        <div class="topbar-left">
+            <div class="search-contact">
+                <div role="search" class="app-search">
+                    <div class="search-input "><input type="text" placeholder="Tìm kiếm liên hệ" class="form-control" id="searchString" name="searchString" value=""><i class="hidden" aria-hidden="true"></i>
+                        <div class="create-contact">
+                            <a id="add-contact" class="waves-effect waves-light" title="Tạo danh bạ mới"><img alt="logo" src="/assets/img/add-new.png"></a>
+                            <div id="drop-choice"><a class="waves-effect waves-light">Tạo danh bạ mới</a><a class="waves-effect waves-light" data-toggle="modal" data-target="#importModal">Thêm danh bạ từ file CSV</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="group-box">
+                <h4 class="header-title m-t-0">Tất cả :
+                    <%= totalContact %>
+                </h4>
+                <div class="dropdown" id="dropdown-filter-contact"><button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-sort-amount-asc"></i><span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a>Tạo gần nhất</a></li>
+                        <li><a>A-Z</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown" id="dropdown-filter-contact-2"><button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-filter can-click"></i><span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a>Tất cả</a></li>
+                        <li><a>Chưa có cuộc gọi</a></li>
+                        <p>Gọi đi</p>
+                        <li><a>Đã kết nối</a></li>
+                        <li><a>Không kết nối</a></li>
+                        <p>Gọi đến</p>
+                        <li><a>Đã kết nối</a></li>
+                        <li><a>Không kết nối</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="left side-menu ps ps--active-y">
+        <div class="sidebar-inner">
+            <div>
+                <% for(var i=0; i < allContact.length; i++){ %>
+                    <div class="contact-box">
+                        <div class="inbox-widget">
+                            <div>
+                                <div title="<%=allContact[i].number %>" class="inbox-item">
+                                    <div class="inbox-item-checkbox">
+                                        <div class="custom-checkbox"><label class="container"><input type="checkbox" value="on"><span class="checkmark"></span></label></div>
+                                    </div>
+                                    <div class="inbox-item-body">
+                                        <div class="inbox-item-img" title="<%=allContact[i].number %>">
+                                            <h5 class="avatar ">Q</h5><span id="numberReminders " class="label label-primary "></span></div>
+                                        <div class="inbox-item-content " title="<%=allContact[i].number %> ">
+                                            <p class="inbox-item-author ">
+                                                <%=allContact[i].firstname %>
+                                                    <%=allContact[i].lastname %>
+                                            </p>
+                                            <p class="inbox-item-text ">
+                                                <%=allContact[i].number %>
+                                            </p>
+                                        </div>
+                                        <div class="inbox-item-text calllog-time ">
+                                            <p class="calllog-date ">
+                                                22/10/20
+                                                <br><img src="/assets/img/outgoing.png "> 00:00
+                                            </p>
+                                        </div>
+                                        <div class="inbox-item-img-show "><img src="/assets/img/button-call.svg " class="show-img "></div>
+                                        <div class="inbox-item-img-show sms-icon "><img src="/assets/img/sms12.png " class="show-img "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <% } %>
+            </div>
+        </div>
+        <div class="ps__rail-x " style="left: 0px; bottom: -197.778px; ">
+            <div class="ps__thumb-x " tabindex="0 " style="left: 0px; width: 0px; "></div>
+        </div>
+        <div class="ps__rail-y " style="top: 197.778px; right: 0px; height: 896px; ">
+            <div class="ps__thumb-y " tabindex="0 " style="top: 63px; height: 286px; "></div>
+        </div>
+    </div>
+    <div class="modal fade " tabindex="-1 " id="createContactModal " role="dialog " aria-labelledby="createContactModalLabel " aria-hidden="true " data-backdrop="static " data-keyboard="false ">
+        <div class="modal-dialog ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h4 class="modal-title " id="createContactModalLabel ">Tạo danh bạ mới</h4>
+                </div>
+                <div class="modal-body ">
+                    <form novalidate=" " id="createContact ">
+                        <div class="form-group "><label id="firstNameLabel ">Tên</label>
+                            <!-- react-text: 393 -->*
+                            <!-- /react-text --><input type="text " required=" " class="form-control " id="firstName " name="firstName " value=" " placeholder="Nhập tên... ">
+                            <div class="error " id="firstNameError "></div>
+                        </div>
+                        <div class="form-group "><label id="lastNameLabel ">Họ</label><input type="text " class="form-control " id="lastName " name="lastName " placeholder="Nhập họ và chữ lót... ">
+                            <div class="error " id="lastNameError "></div>
+                        </div>
+                        <div class="form-group "><label id="phoneLabel ">Số điện thoại</label>
+                            <!-- react-text: 402 -->*
+                            <!-- /react-text --><input type="text " required=" " class="form-control " id="phone " name="phone " value=" " placeholder="Nhập số điện thoại... ">
+                            <div class="error " id="phoneError "></div>
+                        </div>
+                        <div class="form-group "><label id="emailLabel ">Email</label><input type="email " class="form-control " id="email " name="email " value=" " placeholder="Nhập email... ">
+                            <div class="error " id="emailError "></div>
+                        </div>
+                        <div class="form-group " id="gender " style="height: 60px; "><label id="genderLabel " style="display: block; font-weight: 700; ">Giới tính</label><label id="maleLabel "><input type="radio " name="optradio " id="male " value="on
+                                            "><!-- react-text: 413 -->Nam<!-- /react-text --><div class="error " id="maleError "></div></label>
+                            <label id="femaleLabel "><input type="radio " name="optradio " id="female " value="on ">
+                              <!-- react-text: 417 -->Nữ
+                              <!-- /react-text -->
+                              <div class="error " id="femaleError "></div>
+                              </label><label id="unknownLabel "><input type="radio " name="optradio " id="unknown " value="on "><!-- react-text: 421 -->Chưa biết<!-- /react-text --><div class="error " id="unknownError "></div></label></div>
+                        <div class="form-group groupcontact "><label id="groupcontactLabel " style="display: block; font-weight: 700; ">Nhóm</label><select id="groupcontact " class="selectpicker " data-width="200px " style="display: none;
+                                            "><option value=" ">Không chọn nhóm</option><option value="5da7ea27c9a03c65e6098bfe ">HCM FEMALES</option><option value="5d32953d0f3774208bdf5265 ">Company</option><option value="5c765f8c79daba1770088ea7
+                                            ">VIP Customers</option><option value="5b21fec437054330e394cce6 ">Project 1</option></select>
+                            <div class="btn-group bootstrap-select " style="width: 200px; "><button type="button " class="btn dropdown-toggle selectpicker btn-default " data-toggle="dropdown " data-id="groupcontact " title="Không chọn nhóm
+                                            "><span class="filter-option pull-left ">Không chọn nhóm</span>&nbsp;<span class="caret "></span></button>
+                                <div class="dropdown-menu open ">
+                                    <ul class="dropdown-menu inner selectpicker " role="menu ">
+                                        <li data-original-index="0 " class="selected "><a tabindex="0 " class=" " data-normalized-text="<span class=&quot;text&quot;>Khong chọn nhom</span>"><span class="text">Không chọn nhóm</span><span class="glyphicon glyphicon-ok check-mark"></span></a>
+                                        </li>
+                                        <li data-original-index="1"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>HCM FEMALES</span>"><span class="text">HCM FEMALES</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                        <li data-original-index="2"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Company</span>"><span class="text">Company</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                        <li data-original-index="3"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>VIP Customers</span>"><span class="text">VIP Customers</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                        <li data-original-index="4"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Project 1</span>"><span class="text">Project 1</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group"><label>Contact No</label><input type="text" required="" class="form-control" id="create_contactNo" name="contactNo"></div>
+                        <div class="form-group"><label>Enquiry Type</label><input type="text" required="" class="form-control" id="create_enquiryType" name="enquiryType"></div>
+                        <div class="form-group"><label>Policy No</label><input type="text" required="" class="form-control" id="create_policyNo" name="policyNo"></div>
+                        <div class="form-group"><label>Preferred Contact Method</label><input type="text" required="" class="form-control" id="create_preferredContactMethod" name="preferredContactMethod"></div>
+                        <div class="form-group"><label>Case Status</label><input type="text" required="" class="form-control" id="create_caseStatus" name="caseStatus"></div>
+                    </form>
+                </div>
+                <div class="modal-footer"><button type="submit" id="save" class="btn btn-primary waves-effect waves-light"><i class="hidden" style="margin-right: 5px;"></i><!-- react-text: 432 -->Lưu<!-- /react-text --></button><button type="submit" class="btn btn-primary waves-effect waves-light hides"><i class="hidden" style="margin-right: 5px;"></i><!-- react-text: 435 -->Lưu và tiếp tục<!-- /react-text --></button>
+                    <button id="cancel" class="btn btn-default waves-effect m-l-5">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="importModal" role="dialog" aria-labelledby="importModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div>
+                <div class="modal-content">
+                    <div>
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="importModalLabel">Thêm danh bạ từ file CSV</h4>
+                        </div>
+                        <form novalidate="" id="importContact" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <p></p>
+                                <p style="margin-bottom: 2px;"><b>LƯU Ý:</b></p>
+                                <p class="m-t-0"> Vui lòng đọc kỹ file `Guideline - CSV` để tổ chức và định dạng dữ liệu đúng.</p>
+                                <hr style="border-top: 2px dotted;">
+                                <p><b class="m-r-15">Bước 1:</b>
+                                    <!-- react-text: 453 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 454 -->Tải tệp mẫu và hướng dẫn
+                                    <!-- /react-text -->
+                                    <!-- react-text: 455 -->
+                                    <!-- /react-text --><a href="./assets/Contact-pattern.zip" download=""> tại đây </a></p>
+                                <p><b class="m-r-15">Bước 2:</b>
+                                    <!-- react-text: 459 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 460 -->Nhập thông tin theo hướng dẫn vào tệp mẫu đã tải
+                                    <!-- /react-text -->
+                                </p>
+                                <p><b class="m-r-15">Bước 3:</b><label for="fileUpload" class="custom-file-upload"> Chọn tệp</label><input type="file" id="fileUpload" name="file" accept=".csv"><i class="m-l-15" id="fileName"></i></p>
+                                <p>
+                                    <!-- react-text: 467 -->
+                                    <!-- /react-text --><b class="m-r-15">Bước 4:</b><span>Chọn <b>Bỏ qua</b> danh bạ trùng số điện thoại đã tồn tại trong ứng dụng hoặc <b>Cập nhật</b> danh bạ trùng số điện thoại đã tồn tại trong ứng dụng</span></p>
+                                <p>** Với lựa chọn 'Cập nhật': Sau khi nhập file hoàn tất, vui lòng tải lại trang để thấy dữ liệu mới nhất</p>
+                                <p class="text-center" style="color: rgb(103, 58, 183);"><label class="radio-inline"><input type="radio" value="false" name="opt-overwrite"><!-- react-text: 474 -->Bỏ qua<!-- /react-text --></label><label class="radio-inline" style="margin-left: 30px;"><input type="radio" value="true" name="opt-overwrite"><!-- react-text: 477 -->Cập nhật<!-- /react-text --></label></p>
+                                <div id="progress">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer"><button type="submit" class="btn btn-primary waves-effect waves-light" disabled="">Tải lên</button><button id="cancel" class="btn btn-default waves-effect m-l-5" data-dismiss="modal">Hủy</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="importNotifyModal" role="dialog" aria-labelledby="importNotifyModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Danh sách cập nhật thất bại</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <div class="total-failed"></div><a id="button-download-faillist" style="margin-right: 10px; cursor: pointer;">Tải xuống</a><button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">Hủy</button></div>
+            </div>
+        </div>
+    </div>
+    <div id="modalNewFeature" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-body"><img src="/assets/img/Vietupdate.png" style="max-width: 100%;"></div>
+                <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">OK</button></div>
+            </div>
+        </div>
+    </div>
+    <div id="modalAddGroup" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="groupcontact text-center"><label id="groupcontact2Label" style="display: block; font-weight: 700;">Nhóm</label><select id="groupcontact2" class="selectpicker" data-width="200px" data-live-search="true" data-size="10" style="display: none;"><option value="5da7ea27c9a03c65e6098bfe">HCM FEMALES</option><option value="5d32953d0f3774208bdf5265">Company</option><option value="5c765f8c79daba1770088ea7">VIP Customers</option><option value="5b21fec437054330e394cce6">Project 1</option></select>
+                        <div class="btn-group bootstrap-select" style="width: 200px;"><button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="groupcontact2" title="HCM FEMALES"><span class="filter-option pull-left">HCM FEMALES</span>&nbsp;<span class="caret"></span></button>
+                            <div class="dropdown-menu open">
+                                <div class="bs-searchbox"><input type="text" class="input-block-level form-control" autocomplete="off"></div>
+                                <ul class="dropdown-menu inner selectpicker" role="menu">
+                                    <li data-original-index="0" class="selected"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>HCM FEMALES</span>"><span class="text">HCM FEMALES</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="1"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Company</span>"><span class="text">Company</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="2"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>VIP Customers</span>"><span class="text">VIP Customers</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="3"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Project 1</span>"><span class="text">Project 1</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center" style="color: black; margin-top: 12px;">
+                        <!-- react-text: 509 -->Danh bạ đã chọn:
+                        <!-- /react-text -->
+                        <!-- react-text: 510 -->
+                        <!-- /react-text -->
+                        <!-- react-text: 511 -->0
+                        <!-- /react-text -->
+                    </p>
+                </div>
+                <div class="modal-footer"><a id="btn-add-group" class="btn btn-primary waves-effect waves-light" style="margin-right: 10px;"><i class="hidden" style="margin-right: 5px;"></i><!-- react-text: 515 -->OK<!-- /react-text --></a><button type="button" class="btn btn-default"
+                        data-dismiss="modal">Hủy</button></div>
+            </div>
+        </div>
+    </div>
+</div>

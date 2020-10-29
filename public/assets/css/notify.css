@@ -1,0 +1,158 @@
+.confirm-notify {
+  position: fixed;
+  height: 192px;
+  width: 452px;
+  top: 50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border-radius: 10px;
+  background-color: #fff;
+  z-index: 1000000;
+  padding: 40px 0;
+  box-shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.5);
+}
+.confirm-notify > p {
+  text-align: center;
+  font-size: 17px;
+}
+.confirm-notify > div {
+  text-align: center;
+  padding: 39px 0;
+}
+.confirm-notify > div button {
+  padding: 5px 24px;
+  margin: 0 15px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 17px;
+}
+.confirm-notify > div button.btn_yes {
+  color: #fff;
+  background-color: #673AB7;
+}
+.confirm-notify > div button.btn_no {
+  color: #673AB7;
+  background-color: #fff;
+  border: 1px solid #673AB7;
+}
+.register-notify {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 100%;
+  background-color: #673AB7;
+  cursor: pointer;
+  opacity: 0.7;
+  -webkit-transition: all 200ms;
+     -moz-transition: all 200ms;
+       -o-transition: all 200ms;
+          transition: all 200ms;
+}
+.register-notify:not(.clicked):hover {
+  opacity: 1;
+  width: 50px;
+  height: 50px;
+}
+.register-notify .alarm-icon {
+  background-image: url(../img/alarm.png);
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+.register-notify .alarm-icon .announce {
+  text-align: center;
+  display: table;
+  position: absolute;
+  background-color: #000;
+  border-radius: 5px;
+  right: 65px;
+  top: 50%;
+  -webkit-transform: scale(0);
+     -moz-transform: scale(0);
+      -ms-transform: scale(0);
+       -o-transform: scale(0);
+          transform: scale(0);
+  padding: 14.4px;
+  min-width: 190px;
+  height: 50px;
+  color: #fff;
+  opacity: 0;
+  -webkit-transition: opacity 175ms ease-in-out;
+     -moz-transition: opacity 175ms ease-in-out;
+       -o-transition: opacity 175ms ease-in-out;
+          transition: opacity 175ms ease-in-out;
+}
+.register-notify .alarm-icon .announce::before {
+  content: "";
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 13px solid #000;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.register-notify:not(.clicked):hover .alarm-icon .announce {
+  opacity: 1;
+  -webkit-transform: scale(1) translateY(-50%);
+     -moz-transform: scale(1) translateY(-50%);
+      -ms-transform: scale(1) translateY(-50%);
+       -o-transform: scale(1) translateY(-50%);
+          transform: scale(1) translateY(-50%);
+}
+.register-notify.clicked {
+  opacity: 1;
+  width: 50px;
+  height: 50px;
+}
+.register-notify.clicked .alarm-icon .instruction {
+  display: block;
+}
+.register-notify .alarm-icon .instruction {
+  display: none;
+  width: 216px;
+  height: 278px;
+  border-radius: 6px;
+  background-color: #f9fafe;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.25);
+  border: solid 1px #e6ebf3;
+  position: absolute;
+  right: 0;
+  bottom: 145%;
+  text-align: center;
+  padding: 0 9px;
+  font-size: 12px;
+  color: #34495e;
+  overflow: hidden;
+}
+.register-notify .alarm-icon .instruction h4 {
+  font-weight: 600;
+  font-size: 12px;
+}
+.register-notify .alarm-icon .instruction hr {
+  margin: 0;
+  position: absolute;
+  border: 1px solid #e5eaf2;
+  width: 100%;
+  left: 0;
+}
+.register-notify .alarm-icon .instruction p {
+  padding-top: 10px;
+}
+.register-notify .alarm-icon .instruction img {
+  width: 100%;
+  height: 60%;
+}
