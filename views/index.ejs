@@ -1,203 +1,130 @@
 <html>
 
-<head>
+<% include ./partials/header %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
-    <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
-    <title>TCalls</title>
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/jquery-ui.min.js"></script>
-    <script src="/assets/js/adapter.min.js"></script>
-    <script src="/assets/js/DetectRTC.min.js"></script>
-    <script src="/assets/js/socket.io.js"></script>
-    <script src="/assets/js/offline.min.js"></script>
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/perfect-scrollbar.css">
-
-    <link href="/assets/css/core.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/components.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/menu.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/assets/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="/assets/css/callpad.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="/assets/css/react-bootstrap-table.min.css">
-    <!-- <link rel="stylesheet" href="/assets/css/callbox.css"> -->
-    <link rel="stylesheet" href="/assets/css/notify.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css">
-    <link rel="stylesheet" href="/assets/css/introjs-modern.css">
-    <meta charset="utf-8" data-react-helmet="true">
-</head>
-
-<body class="fixed-left">
-    <div id="root">
-        <div data-reactroot="" id="wrapper">
-            <!-- Topbar -->
-            <% include ./partials/topbar %>
-                <div class="content-page">
-                    <% include ./partials/contact %>
-                        <% include ./partials/activity %>
-                            <% include ./partials/history %>
-                </div>
-                <% include ./partials/callbox %>
-                    <div class="notify-container"></div>
-                    <div id="list-contacts-integration" class="hidden"><button class="close">x</button><button class="fa fa-cog btn-cog-iframe hidden"></button>
-                        <h5 id="minimize-iframe">
-                            View Profile
-                            <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
-                        <div class="body-iframe">
-                            <ul class="nav nav-tabs"></ul>
-                            <div class="tab-content"></div>
-                        </div>
+    <body class="fixed-left">
+        <div id="root">
+            <div data-reactroot="" id="wrapper">
+                <!-- Topbar -->
+                <% include ./partials/topbar %>
+                    <div class="content-page">
+                        <% include ./partials/contact %>
+                            <% include ./partials/activity %>
+                                <% include ./partials/history %>
                     </div>
-                    <div id="modal-vinhtin" class="modal fade" role="dialog">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <h4><b></b></h4>
-                                    <h5></h5>
-                                </div>
-                                <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">OK</button></div>
+                    <% include ./partials/callbox %>
+                        <div class="notify-container"></div>
+                        <div id="list-contacts-integration" class="hidden"><button class="close">x</button><button class="fa fa-cog btn-cog-iframe hidden"></button>
+                            <h5 id="minimize-iframe">
+                                View Profile
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
+                            <div class="body-iframe">
+                                <ul class="nav nav-tabs"></ul>
+                                <div class="tab-content"></div>
                             </div>
                         </div>
-                    </div>
-                    <div id="modal-template" class="modal modal-custom-1 fade" role="dialog" data-backdrop="static">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4>
-                                        Nhãn cuộc gọi
-                                        <b></b></h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="groupcontact">
-                                        <ul id="list-templates" class="ul-tags">
-                                            <li value="5d3269d00f3774208bdf3d19" data-name="Follow-up">
-                                                Follow-up &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5d3283560f3774208bdf4a7a" data-name="Can't approach">
-                                                Can't approach &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5d3283920f3774208bdf4a89" data-name="Complain">
-                                                Complain &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5da81188c9a03c65e609959d" data-name="Closing call">
-                                                Closing call &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5e562f5c3722937730404d0c" data-name="Partnership">
-                                                Partnership &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5e8d827eb37ff10ccd1297c3" data-name="Asking information">
-                                                Asking information &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5ea69cb4b37ff10ccd14f487" data-name="Objection">
-                                                Objection &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5ec889703b27543634a76163" data-name="Training call">
-                                                Training call &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f881474887d80511b6d6748" data-name="Hẹn gọi lại">
-                                                Hẹn gọi lại &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f88147e887d80511b6d674c" data-name="Khách đang bận">
-                                                Khách đang bận &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f8814872ff52c510c485cd6" data-name="Hỏi sản phẩm">
-                                                Hỏi sản phẩm &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f8d28bc2ff52c510c488519" data-name="Không Nghe Máy">
-                                                Không Nghe Máy &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f9282a3887d80511b6dd251" data-name="KH Tiềm năng">
-                                                KH Tiềm năng &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f9282b25028137933bb0cf3" data-name="TC_Chốt Đơn">
-                                                TC_Chốt Đơn &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f963884887d80511b6dec50" data-name="Hẹn tư vấn trực tiếp">
-                                                Hẹn tư vấn trực tiếp &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f9638882ff52c510c48df54" data-name="Toeic">
-                                                Toeic &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f96388f5028137933bb3916" data-name="Giao tiếp">
-                                                Giao tiếp &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f9639685028137933bb3934" data-name="Du học">
-                                                Du học &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                            <li value="5f963a675028137933bb3960" data-name="Hài Lòng">
-                                                Hài Lòng &nbsp;
-                                                <i class="fa fa-times"></i></li>
-                                        </ul><label style="display: block; font-weight: 700; color: rgb(103, 58, 183);">Thêm nhãn mới: </label><input class="form-control">
-                                        <div class="text-right div-btn"><button class="btn btn-primary btn-add"><i class="hidden" style="margin-right: 5px;"></i><!-- react-text: 106 -->Thêm<!-- /react-text --></button></div>
+                        <div id="modal-vinhtin" class="modal fade" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h4><b></b></h4>
+                                        <h5></h5>
                                     </div>
+                                    <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">OK</button></div>
                                 </div>
-                                <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">OK</button></div>
                             </div>
                         </div>
-                    </div>
-                    <div id="modalSMS" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <h4 style="margin-bottom: 20px;">
-                                        <!--4 -->Người nhận:
-
-
-                                        <b></b></h4>
-                                    <div class="select-sms" style="margin-bottom: 20px; display: flex;">
-                                        <div style="margin-right: 10px;">
-                                            <h5 style="margin-bottom: 10px; font-weight: bold;">
-                                                Mẫu:
-
-                                                <!--1 -->
-                                                <b></b></h5><select class="selectpicker" data-live-search="true" data-width="100%" id="selet-sms-template" style="display: none;"><option value="">Nothing selected</option><option value="Gcalls da gui thong tin giai phap tong dai tich hop den email .... Em rat mong se nhan duoc phan hoi tu Anh ..., chuc Anh mot ngay tot lanh! Tu van vien: Ms. Ly, SDT 0364260070, Email ly.hoang@gcalls.vn.">Email notification</option><option value="Gcalls da lien he Anh ... SDT ... de tu van ve giai phap phan mem tong dai nhung chua gap duoc a. Tu van vien se lien he lai sau hoac Anh ... co the lien he: SDT 0898587099, email ly.hoang@gcalls.vn. Tran trong!">No answer</option><option value="Happy birthday {firstname}!">Chuc mung sinh nhat</option><option value="Giai phap tong dai tich hop https://gcalls.co/ se giup Anh ... quan ly duoc 100% du lieu cuoc goi, tang doanh thu 30% va khach hang hai long hon. Lien he de duoc tu van: 0364260070 hoac email ly.hoang@gcalls.vn (Ms. Ly).">Cold SMS</option></select>
-                                            <div class="btn-group bootstrap-select" style="width: 100%;"><button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="selet-sms-template" title="Nothing selected"><span class="filter-option pull-left">Nothing selected</span>&nbsp;<span class="caret"></span></button>
-                                                <div class="dropdown-menu open">
-                                                    <div class="bs-searchbox"><input type="text" class="input-block-level form-control" autocomplete="off"></div>
-                                                    <ul class="dropdown-menu inner selectpicker" role="menu">
-                                                        <li data-original-index="0" class="selected"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Nothing selected</span>"><span class="text">Nothing selected</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-                                                        <li data-original-index="1"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Email notification</span>"><span class="text">Email notification</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-                                                        <li data-original-index="2"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>No answer</span>"><span class="text">No answer</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-                                                        <li data-original-index="3"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Chuc mung sinh nhat</span>"><span class="text">Chuc mung sinh nhat</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-                                                        <li data-original-index="4"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Cold SMS</span>"><span class="text">Cold SMS</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                        <div id="modal-template" class="modal modal-custom-1 fade" role="dialog" data-backdrop="static">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4>
+                                            Nhãn cuộc gọi
+                                            <b></b></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="groupcontact">
+                                            <ul id="list-templates" class="ul-tags">
+                                                <li value="5d3269d00f3774208bdf3d19" data-name="Follow-up">
+                                                    Follow-up &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5d3283560f3774208bdf4a7a" data-name="Can't approach">
+                                                    Can't approach &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5d3283920f3774208bdf4a89" data-name="Complain">
+                                                    Complain &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5da81188c9a03c65e609959d" data-name="Closing call">
+                                                    Closing call &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5e562f5c3722937730404d0c" data-name="Partnership">
+                                                    Partnership &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5e8d827eb37ff10ccd1297c3" data-name="Asking information">
+                                                    Asking information &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5ea69cb4b37ff10ccd14f487" data-name="Objection">
+                                                    Objection &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5ec889703b27543634a76163" data-name="Training call">
+                                                    Training call &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f881474887d80511b6d6748" data-name="Hẹn gọi lại">
+                                                    Hẹn gọi lại &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f88147e887d80511b6d674c" data-name="Khách đang bận">
+                                                    Khách đang bận &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f8814872ff52c510c485cd6" data-name="Hỏi sản phẩm">
+                                                    Hỏi sản phẩm &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f8d28bc2ff52c510c488519" data-name="Không Nghe Máy">
+                                                    Không Nghe Máy &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f9282a3887d80511b6dd251" data-name="KH Tiềm năng">
+                                                    KH Tiềm năng &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f9282b25028137933bb0cf3" data-name="TC_Chốt Đơn">
+                                                    TC_Chốt Đơn &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f963884887d80511b6dec50" data-name="Hẹn tư vấn trực tiếp">
+                                                    Hẹn tư vấn trực tiếp &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f9638882ff52c510c48df54" data-name="Toeic">
+                                                    Toeic &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f96388f5028137933bb3916" data-name="Giao tiếp">
+                                                    Giao tiếp &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f9639685028137933bb3934" data-name="Du học">
+                                                    Du học &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                                <li value="5f963a675028137933bb3960" data-name="Hài Lòng">
+                                                    Hài Lòng &nbsp;
+                                                    <i class="fa fa-times"></i></li>
+                                            </ul><label style="display: block; font-weight: 700; color: rgb(103, 58, 183);">Thêm nhãn mới: </label><input class="form-control">
+                                            <div class="text-right div-btn"><button class="btn btn-primary btn-add"><i class="hidden" style="margin-right: 5px;"></i><!-- react-text: 106 -->Thêm<!-- /react-text --></button></div>
                                         </div>
-                                    </div><textarea rows="5" maxlength="459" class="form-control custom-textarea"></textarea>
-                                    <div style="margin: 10px 0px; font-style: italic; text-align: right;"><span>Tối đa: 459 kí tự, 3 SMS.   Hiện tại: </span><span id="count_sms"></span>
-                                        <!--9 -->
-
-                                        kí tự, SMS:
-
-                                        <!--1 -->
-                                        <span id="count_sms2"></span></div>
-                                    <div style="margin-bottom: 8px; font-style: italic;"><span>Lưu ý:</span></div>
-                                    <div style="margin-bottom: 8px; font-style: italic;"><span>- SMS không được chứa dấu tiếng Việt.</span></div>
-                                    <div style="margin-bottom: 15px; font-style: italic;"><span>- Để gửi SMS cá nhân hoá tên người nhận, vui lòng đánh {firstname} vào vị trí tương ứng trong nội dung. Ví dụ: Chuc mung sinh nhat anh {firstname}.</span></div>
-                                    <div style="margin-bottom: 10px; text-align: center; font-size: 18px; color: rgb(103, 58, 183);"><i></i></div>
+                                    </div>
+                                    <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">OK</button></div>
                                 </div>
-                                <div class="modal-footer"><button id="btn-send-sms" class="btn btn-primary waves-effect waves-light" style="margin-right: 10px;"><i class="hidden" style="margin-right: 5px;"></i><!--4 -->Gửi<!-- /react-text --></button><button type="button" class="btn btn-default"
-                                        data-dismiss="modal">Đóng</button></div>
                             </div>
                         </div>
-                    </div>
-                    <div id="modalSMSGroup" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <h4 style="margin-bottom: 20px;"><b></b></h4>
-                                    <div class="select-sms" style="margin-bottom: 20px;">
+                        <div id="modalSMS" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 style="margin-bottom: 20px;">
+                                            <!--4 -->Người nhận:
+
+
+                                            <b></b></h4>
                                         <div class="select-sms" style="margin-bottom: 20px; display: flex;">
                                             <div style="margin-right: 10px;">
                                                 <h5 style="margin-bottom: 10px; font-weight: bold;">
                                                     Mẫu:
 
-
+                                                    <!--1 -->
                                                     <b></b></h5><select class="selectpicker" data-live-search="true" data-width="100%" id="selet-sms-template" style="display: none;"><option value="">Nothing selected</option><option value="Gcalls da gui thong tin giai phap tong dai tich hop den email .... Em rat mong se nhan duoc phan hoi tu Anh ..., chuc Anh mot ngay tot lanh! Tu van vien: Ms. Ly, SDT 0364260070, Email ly.hoang@gcalls.vn.">Email notification</option><option value="Gcalls da lien he Anh ... SDT ... de tu van ve giai phap phan mem tong dai nhung chua gap duoc a. Tu van vien se lien he lai sau hoac Anh ... co the lien he: SDT 0898587099, email ly.hoang@gcalls.vn. Tran trong!">No answer</option><option value="Happy birthday {firstname}!">Chuc mung sinh nhat</option><option value="Giai phap tong dai tich hop https://gcalls.co/ se giup Anh ... quan ly duoc 100% du lieu cuoc goi, tang doanh thu 30% va khach hang hai long hon. Lien he de duoc tu van: 0364260070 hoac email ly.hoang@gcalls.vn (Ms. Ly).">Cold SMS</option></select>
                                                 <div class="btn-group bootstrap-select" style="width: 100%;"><button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="selet-sms-template" title="Nothing selected"><span class="filter-option pull-left">Nothing selected</span>&nbsp;<span class="caret"></span></button>
                                                     <div class="dropdown-menu open">
@@ -212,118 +139,104 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div><textarea rows="5" maxlength="459" class="form-control custom-textarea"></textarea>
-                                    <div style="margin: 10px 0px; font-style: italic; text-align: right;"><span>Tối đa: 459 kí tự, 3 SMS.   Hiện tại: </span><span id="count_sms"></span> kí tự, SMS:
-                                        <span id="count_sms2"></span></div>
-                                    <div style="margin-bottom: 8px; font-style: italic;"><span>Lưu ý:</span></div>
-                                    <div style="margin-bottom: 8px; font-style: italic;"><span>- SMS không được chứa dấu tiếng Việt.</span></div>
-                                    <div style="margin-bottom: 10px; font-style: italic;"><span>- Để gửi SMS cá nhân hoá tên người nhận, vui lòng đánh {firstname} vào vị trí tương ứng trong nội dung. Ví dụ: Chuc mung sinh nhat anh {firstname}.</span></div>
-                                    <div class="progress progress-sms" style="display: none;">
-                                        <div class="progress-bar progress-bar-striped" role="progressbar" id="progress-sms" style="width: 0%;">0</div>
+                                        </div><textarea rows="5" maxlength="459" class="form-control custom-textarea"></textarea>
+                                        <div style="margin: 10px 0px; font-style: italic; text-align: right;"><span>Tối đa: 459 kí tự, 3 SMS.   Hiện tại: </span><span id="count_sms"></span>
+                                            <!--9 -->
+
+                                            kí tự, SMS:
+
+                                            <!--1 -->
+                                            <span id="count_sms2"></span></div>
+                                        <div style="margin-bottom: 8px; font-style: italic;"><span>Lưu ý:</span></div>
+                                        <div style="margin-bottom: 8px; font-style: italic;"><span>- SMS không được chứa dấu tiếng Việt.</span></div>
+                                        <div style="margin-bottom: 15px; font-style: italic;"><span>- Để gửi SMS cá nhân hoá tên người nhận, vui lòng đánh {firstname} vào vị trí tương ứng trong nội dung. Ví dụ: Chuc mung sinh nhat anh {firstname}.</span></div>
+                                        <div style="margin-bottom: 10px; text-align: center; font-size: 18px; color: rgb(103, 58, 183);"><i></i></div>
                                     </div>
-                                    <div style="margin-bottom: 10px; text-align: center; font-size: 18px; color: rgb(103, 58, 183);"><i></i></div>
+                                    <div class="modal-footer"><button id="btn-send-sms" class="btn btn-primary waves-effect waves-light" style="margin-right: 10px;"><i class="hidden" style="margin-right: 5px;"></i><!--4 -->Gửi<!-- /react-text --></button><button type="button"
+                                            class="btn btn-default" data-dismiss="modal">Đóng</button></div>
                                 </div>
-                                <div class="modal-footer"><a id="btn-send-sms-group" class="btn btn-primary waves-effect waves-light" style="margin-right: 10px;"><i class="hidden" style="margin-right: 5px;"></i>Gửi<!-- /react-text --></a><button type="button" class="btn btn-default"
-                                        data-dismiss="modal">Đóng</button></div>
                             </div>
                         </div>
-                    </div>
+                        <div id="modalSMSGroup" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 style="margin-bottom: 20px;"><b></b></h4>
+                                        <div class="select-sms" style="margin-bottom: 20px;">
+                                            <div class="select-sms" style="margin-bottom: 20px; display: flex;">
+                                                <div style="margin-right: 10px;">
+                                                    <h5 style="margin-bottom: 10px; font-weight: bold;">
+                                                        Mẫu:
+
+
+                                                        <b></b></h5><select class="selectpicker" data-live-search="true" data-width="100%" id="selet-sms-template" style="display: none;"><option value="">Nothing selected</option><option value="Gcalls da gui thong tin giai phap tong dai tich hop den email .... Em rat mong se nhan duoc phan hoi tu Anh ..., chuc Anh mot ngay tot lanh! Tu van vien: Ms. Ly, SDT 0364260070, Email ly.hoang@gcalls.vn.">Email notification</option><option value="Gcalls da lien he Anh ... SDT ... de tu van ve giai phap phan mem tong dai nhung chua gap duoc a. Tu van vien se lien he lai sau hoac Anh ... co the lien he: SDT 0898587099, email ly.hoang@gcalls.vn. Tran trong!">No answer</option><option value="Happy birthday {firstname}!">Chuc mung sinh nhat</option><option value="Giai phap tong dai tich hop https://gcalls.co/ se giup Anh ... quan ly duoc 100% du lieu cuoc goi, tang doanh thu 30% va khach hang hai long hon. Lien he de duoc tu van: 0364260070 hoac email ly.hoang@gcalls.vn (Ms. Ly).">Cold SMS</option></select>
+                                                    <div class="btn-group bootstrap-select" style="width: 100%;"><button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="selet-sms-template" title="Nothing selected"><span class="filter-option pull-left">Nothing selected</span>&nbsp;<span class="caret"></span></button>
+                                                        <div class="dropdown-menu open">
+                                                            <div class="bs-searchbox"><input type="text" class="input-block-level form-control" autocomplete="off"></div>
+                                                            <ul class="dropdown-menu inner selectpicker" role="menu">
+                                                                <li data-original-index="0" class="selected"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Nothing selected</span>"><span class="text">Nothing selected</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                                                <li data-original-index="1"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Email notification</span>"><span class="text">Email notification</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                                                <li data-original-index="2"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>No answer</span>"><span class="text">No answer</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                                                <li data-original-index="3"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Chuc mung sinh nhat</span>"><span class="text">Chuc mung sinh nhat</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                                                <li data-original-index="4"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Cold SMS</span>"><span class="text">Cold SMS</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><textarea rows="5" maxlength="459" class="form-control custom-textarea"></textarea>
+                                        <div style="margin: 10px 0px; font-style: italic; text-align: right;"><span>Tối đa: 459 kí tự, 3 SMS.   Hiện tại: </span><span id="count_sms"></span> kí tự, SMS:
+                                            <span id="count_sms2"></span></div>
+                                        <div style="margin-bottom: 8px; font-style: italic;"><span>Lưu ý:</span></div>
+                                        <div style="margin-bottom: 8px; font-style: italic;"><span>- SMS không được chứa dấu tiếng Việt.</span></div>
+                                        <div style="margin-bottom: 10px; font-style: italic;"><span>- Để gửi SMS cá nhân hoá tên người nhận, vui lòng đánh {firstname} vào vị trí tương ứng trong nội dung. Ví dụ: Chuc mung sinh nhat anh {firstname}.</span></div>
+                                        <div class="progress progress-sms" style="display: none;">
+                                            <div class="progress-bar progress-bar-striped" role="progressbar" id="progress-sms" style="width: 0%;">0</div>
+                                        </div>
+                                        <div style="margin-bottom: 10px; text-align: center; font-size: 18px; color: rgb(103, 58, 183);"><i></i></div>
+                                    </div>
+                                    <div class="modal-footer"><a id="btn-send-sms-group" class="btn btn-primary waves-effect waves-light" style="margin-right: 10px;"><i class="hidden" style="margin-right: 5px;"></i>Gửi<!-- /react-text --></a><button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Đóng</button></div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
         </div>
-    </div>
-    <script>
-        var resizefunc = [];
-    </script>
-
-    <script src="/assets/js/dial.js"></script>
-    <script src="/assets/js/moment.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/detect.js"></script>
-    <script src="/assets/js/waves.js"></script>
-    <script type="text/javascript" src="/assets/js/perfect-scrollbar.js"></script>
-    <script type="text/javascript" src="/assets/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="/assets/js/vi.js"></script>
-    <script src="/assets/js/bootstrap-select.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js"></script>
-
-    <script src="/assets/js/RecordRTC.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
-    <!-- <script src="/static/agent.bundle.js"></script> -->
-    <script src="/assets/js/main.js"></script>
-    <script>
-        $("form button").keypress(function(e) {
-            if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-                $('button[type=submit] .default').click();
-                return false;
-            } else {
-                return true;
-            }
-        });
-        // window.zESettings = {
-        //   webWidget: {
-        //     helpCenter: {
-        //       title: {
-        //         'vi': 'Tự tìm hiểu',
-        //         '*': 'Learn on my own'                
-        //       },
-        //       searchPlaceholder: {
-        //         'vi': 'Gõ từ khoá nội dung cần hướng dẫn',
-        //         '*': 'Search our learning resources here'                
-        //       },
-        //       chatButton: {
-        //         'vi': 'Chat',
-        //         '*': "Chat"
-        //       }
-        //     }
-        //   },
-        //    chat: {
-        //       prechatForm: {
-        //         greeting: {
-        //           'vi': 'Vui lòng điền thông tin để Gcalls có thể hỗ trợ bạn tốt nhất!',
-        //           '*': "Please enter some info so that Gcalls can provide you the best support!"
-        //         }
-        //       }
-        //     }
-        // };
-        // if(zE)
-        // zE('webWidget', 'helpCenter:setSuggestions', { search: 'suggest' });
-    </script>
-    <!-- <script type="text/javascript">
-        var intro = introJs();
-        intro.setOptions({
-            steps: [{
-                element: document.querySelector('#hambuger'),
-                intro: "This is a tooltip."
-            }]
-        });
-        intro.start();
-    </script> -->
-    <!--  <script>
-        (function(h, o, t, j, a, r) {
-            h.hj = h.hj || function() {
-                (h.hj.q = h.hj.q || []).push(arguments)
-            };
-            h._hjSettings = {
-                hjid: 791030,
-                hjsv: 6
-            };
-            a = o.getElementsByTagName('head')[0];
-            r = o.createElement('script');
-            r.async = 1;
-            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-    </script> -->
+        <script>
+            var resizefunc = [];
+        </script>
+        <script src="/assets/js/dial.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/detect.js"></script>
+        <script src="/assets/js/waves.js"></script>
+        <script type="text/javascript" src="/assets/js/perfect-scrollbar.js"></script>
+        <script type="text/javascript" src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="/assets/js/vi.js"></script>
+        <script src="/assets/js/bootstrap-select.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js"></script>
+        <script src="/assets/js/RecordRTC.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+        <!-- <script src="/static/agent.bundle.js"></script> -->
+        <script src="/assets/js/sipcontrol.js"></script>
+        <script src="/assets/js/main.js"></script>
+        <script>
+            $("form button").keypress(function(e) {
+                if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+                    $('button[type=submit] .default').click();
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+        </script>
+        <div class="offline-ui offline-ui-up">
+            <div class="offline-ui-content"></div>
+            <a href="" class="offline-ui-retry"></a>
+        </div>
 
 
-    <div class="offline-ui offline-ui-up">
-        <div class="offline-ui-content"></div>
-        <a href="" class="offline-ui-retry"></a>
-    </div>
-
-
-</body>
+    </body>
 
 </html>

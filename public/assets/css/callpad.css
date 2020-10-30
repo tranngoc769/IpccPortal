@@ -42,7 +42,7 @@
 
 .call-footer {
     width: 280px;
-    height: 80px;
+    height: 90px;
     background: #35B034 0% 0% no-repeat padding-box;
     opacity: 1;
 }
@@ -88,7 +88,7 @@
     z-index: 1;
 }
 
-.pad .dial-pad .contact .avatar {
+.pad .dial-pad .contact .n-avatar {
     margin: 5px 10px;
     vertical-align: middle;
     width: 40px;
@@ -161,7 +161,7 @@
 .pad .dial-pad .contact .contact-buttons button.icon-callnow {
     vertical-align: middle;
     background-color: rgb(255 196 78);
-    background-image: url(../img/call.png) no-repeat;
+    background-image: url('../img/call.png') no-repeat;
 }
 
 .pad .dial-pad .contact .contact-buttons button.icon-video {
@@ -401,7 +401,7 @@
 }
 
 .pad .call-pad .ca-buttons .ca-b-single {
-    background: rgb(219 219 219 / 50%) 0% 0% no-repeat padding-box;
+    background: rgb(0 0 0 / 50%) 0% 0% no-repeat padding-box;
     opacity: 1;
     float: left;
     width: 50px;
@@ -487,6 +487,11 @@
     -ms-transform: rotate(134deg);
     -webkit-transform: rotate(134deg);
     transform: rotate(134deg);
+}
+
+.call .call-icon.return {
+    background-color: #3de066 !important;
+    background-image: url(../img/return.png);
 }
 
 .call .call-change {
@@ -672,27 +677,31 @@
 }
 
 .add-contact {
-    background-image: url(../img/contact.png)
+    background-image: url(../img/plus.png)!important;
 }
 
 .mute {
-    background-image: url(../img/mute.png)
+    background-image: url(../img/mute.png)!important;
 }
 
-.speaker {
-    background-image: url(../img/speaker.png)
+.hold {
+    background-image: url(../img/phone.png)!important;
 }
 
-.other {
-    background-image: url(../img/hand.png)
+.tag {
+    background-image: url(../img/tag.png)!important;
 }
 
-.chat {
-    background-image: url(../img/support.png)
+.note {
+    background-image: url(../img/note.png)!important;
 }
 
 .keypad {
-    background-image: url(../img/keypad.png)
+    background-image: url(../img/keypad.png)!important;
+}
+
+.recall {
+    background-image: url(../img/phone.png)!important;
 }
 
 .toaster {
@@ -759,4 +768,53 @@
         bottom: 0;
         opacity: 0;
     }
+}
+
+.call-controller {
+    opacity: 1;
+}
+
+.unvisible {
+    opacity: 0 !important;
+}
+
+.endcall-status {
+    display: flex;
+    opacity: 1;
+    float: left;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin-bottom: 40px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 55% auto;
+    float: left;
+    position: relative;
+}
+
+.endcall-space {
+    display: flex;
+    opacity: 1;
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-left: calc(100% - 180px);
+    margin-right: calc(100% - 180px);
+    position: relative;
+    margin-bottom: 40px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 55% auto;
+    float: left;
+    position: relative;
+}
+
+.endcall-status label {
+    font-size: large;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: sub;
+    color: #39b137;
+    margin: auto 10px;
 }

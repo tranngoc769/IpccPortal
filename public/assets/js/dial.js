@@ -15,6 +15,7 @@ var makeToast = function(info) {
 var timeoutTimer = true;
 var totalSeconds = 0;
 var timeCounterCounting = true;
+
 var callConnected = function() {
     timeoutTimer = false;
     timeCounterCounting = true;
@@ -30,17 +31,23 @@ var callConnected = function() {
         }, 1000);
     });
 }
-var hangUpCall = function() {
-    clearInterval(y);
-    clearInterval(z);
+var returnDialpad = function() {
     toggleInCall();
-    $(".normal").toggleClass("hideCall");
-    timeCounterCounting = false;
-    totalSeconds = 0;
-    timeoutTimer = false;
+    $(".normal").toggleClass("hideCall"); // show/hide dialpad
     $('.phoneString input').val('');
     checkNumber();
 };
+var hangUpCall = function() {
+    clearInterval(y);
+    clearInterval(z);
+    timeCounterCounting = false;
+    totalSeconds = 0;
+    timeoutTimer = false;
+    $('.call-icon').toggleClass('return');
+    $('.endcall-controller').toggleClass('hide');
+    $('.call-controller').toggleClass('hide');
+    // returnDialpad();
+}
 var timeCounterLoop = function() {
     if (timeCounterCounting) {
         z = setTimeout(function() {
@@ -65,6 +72,11 @@ var timeCounterLoop = function() {
 };
 
 var toggleInCall = function() {
+    if ($('.call-icon').hasClass('return')) {
+        $('.call-icon').toggleClass('return');
+    }
+    $('.endcall-controller').toggleClass('hide');
+    $('.call-controller').toggleClass('hide');
     $('.call-pad').toggleClass('in-call');
     $('.call-icon').toggleClass('in-call');
     $('.call-change').toggleClass('in-call');
@@ -94,7 +106,6 @@ var checkNumber = function() {
             function(data, status) {
                 if (status == 'success') {
                     if (data.code == 200) {
-                        console.log(data.msg);
                         showUserInfo(data.msg);
                     } else {
                         hideUserInfo();
@@ -111,7 +122,7 @@ var showUserInfo = function(userInfo) {
     if (!$('.contact').hasClass('showContact')) {
         $('.contact').addClass('showContact');
     }
-    $('.avatar').attr('style', "background-image: url(/assets/user/tnquang.png)");
+    $('.n-avatar').attr('style', "background-image: url(/assets/user/tnquang.png)");
     if (!$('.contact').hasClass('showContact')) {
         $('.contact').addClass('showContact');
     }
@@ -123,16 +134,11 @@ var showUserInfo = function(userInfo) {
     var remainNumber = number.substring(index + matchedNumbers.length, number.length);
     $('.contact-number').html(firstNumber + "<span>" + matchedNumbers + "</span>" + remainNumber);
     $('.contact-name').html(userInfo['firstname'] + " " + userInfo['lastname']);
-
-    // $('.ca-avatar').attr('style', 'background-image: url(' + userInfo.image + ')');
-    // $('.ca-name').text(userInfo.name);
-    // $('.ca-number').text(userInfo.number);
 };
 var hideUserInfo = function() {
     $('.contact').removeClass('showContact');
 };
 $(document).on('ready', function() {
-
     function playsound(num) {
         var music = new Audio();
         if (num == "#") num = "right";
@@ -151,7 +157,6 @@ $(document).on('ready', function() {
         $('.phoneString input').val(desUser.number);
         $(".call.action-dig").click();
     });
-
     $('.number-dig').click(function() {
         addAnimationToButton(this);
         var currentValue = $('.phoneString input').val();
@@ -203,11 +208,9 @@ $(document).on('ready', function() {
             $(_this).addClass('clicked');
         }, 1);
     };
-
     $('div[data-label="Keypad"]').on('click', function() {
-            $('div[id="dial-pad-incall"]').toggleClass('hideCall');
-        })
-        // DIVIDE
+        $('div[id="dial-pad-incall"]').toggleClass('hideCall');
+    })
     $('button[id="dial-icon"]').on('click', function() {
         $('div[id="pad"]').toggleClass("hide");
         $('button[id="dial-icon"]').toggleClass("hide")
@@ -216,13 +219,32 @@ $(document).on('ready', function() {
         $('button[id="dial-icon"]').toggleClass("hide")
         $('div[class="key-pad"]').toggleClass("hideCall")
     })
-
     $('div[class="close-dial"]').on('click', function(e) {
-        $('div[id="pad"]').animate({ bottom: '-700px', left: '-100px' });
-        $('button[id="dial-icon"]').toggleClass("hide");
-        setTimeout(function() {
-            $('div[id="pad"]').removeAttr("style");
-            $('div[id="pad"]').toggleClass("hide");
-        }, 1000);
+            $('div[id="pad"]').animate({ bottom: '-700px', left: '-100px' });
+            $('button[id="dial-icon"]').toggleClass("hide");
+            setTimeout(function() {
+                $('div[id="pad"]').removeAttr("style");
+                $('div[id="pad"]').toggleClass("hide");
+            }, 1000);
+        })
+        // 
+
+    $('div[class~="add-contact"]').on('click', function(e) {
+        alert("Add contact");
+    })
+    $('div[class~="mute"]').on('click', function(e) {
+        alert("Add contact");
+    })
+    $('div[class~="hold"]').on('click', function(e) {
+        alert("Hold");
+    })
+    $('div[class~="tag"]').on('click', function(e) {
+        alert("Add Tag");
+    })
+    $('div[class~="note"]').on('click', function(e) {
+        alert("Add Note");
+    })
+    $('div[class~="keypad"]').on('click', function(e) {
+        alert("Add keypad");
     })
 })

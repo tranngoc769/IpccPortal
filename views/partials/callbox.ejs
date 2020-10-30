@@ -7,13 +7,14 @@
             </div>
             <div class="normal">
                 <div class="contact">
-                    <div class="avatar"></div>
+                    <div class="n-avatar"></div>
                     <div class="contact-info">
                         <div class="contact-name"></div>
                         <div class="contact-number"></div>
                     </div>
                     <div class="contact-buttons">
-                        <button class="icon-callnow"></button>
+                        <button class="icon-callnow"><img src="assets/img/call.png" 
+                        style="width: 100%;"></button>
                     </div>
                 </div>
                 <div class="phoneString">
@@ -112,12 +113,22 @@
             </div>
 
             <div class="ca-buttons">
-                <div class="ca-b-single add-contact" data-label="Add Contact"></div>
-                <div class="ca-b-single mute" data-label="Mute"></div>
-                <div class="ca-b-single speaker" data-label="Speaker"></div>
-                <div class="ca-b-single other" data-label="SomeThing"></div>
-                <div class="ca-b-single chat" data-label="Chat"></div>
-                <div class="ca-b-single keypad" data-label="Keypad"></div>
+                <div class="endcall-controller">
+                    <div class="endcall-status">
+                        <label id="end-status">Thành công</label></div>
+                    <div class="endcall-space"></div>
+                    <div class="ca-b-single recall" data-label="Recall"></div>
+                </div>
+                <div class="call-controller hide">
+                    <div class="ca-b-single mute" data-label="Mute"></div>
+                    <div class="ca-b-single hold" data-label="Hold"></div>
+                    <div class="ca-b-single keypad" data-label="Keypad"></div>
+                </div>
+                <div>
+                    <div class="ca-b-single tag" data-label="Tag"></div>
+                    <div class="ca-b-single note" data-label="Note"></div>
+                    <div class="ca-b-single add-contact" data-label="Add Contact"></div>
+                </div>
             </div>
         </div>
         <div class="call action-dig">
