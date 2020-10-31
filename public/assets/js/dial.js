@@ -33,6 +33,8 @@ var callConnected = function() {
 }
 var returnDialpad = function() {
     toggleInCall();
+    $('.endcall-controller').toggleClass('hide');
+    $('.call-controller').toggleClass('hide');
     $(".normal").toggleClass("hideCall"); // show/hide dialpad
     $('.phoneString input').val('');
     checkNumber();
@@ -102,7 +104,7 @@ var looper = function() {
 var checkNumber = function() {
     var numberToCheck = $('.phoneString input').val();
     if (numberToCheck.length > 0) {
-        $.get(`/api/contact?number=${numberToCheck}`,
+        $.get(`/contact?number=${numberToCheck}`,
             function(data, status) {
                 if (status == 'success') {
                     if (data.code == 200) {
@@ -152,7 +154,6 @@ $(document).on('ready', function() {
         desUser.image = $("div[class='avatar']").css("background-image");
     }
     $('button[class="icon-callnow"]').click(function() {
-        console.log('Icon click');
         setUserCall();
         $('.phoneString input').val(desUser.number);
         $(".call.action-dig").click();
@@ -173,6 +174,10 @@ $(document).on('ready', function() {
             $('.phoneString input').val(newValue);
             checkNumber();
         } else if ($(this).hasClass('call')) {
+            if (($('.call-icon').hasClass('return'))) {
+                returnDialpad();
+                return;
+            }
             if ($('.call-pad').hasClass('in-call')) {
                 terminate();
             } else {

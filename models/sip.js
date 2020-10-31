@@ -4,7 +4,7 @@ module.exports = {
     getAllSipAccount: async(id) => {
         const sql = `SELECT  *
                      FROM ${tb}`;
-        const rows = await db.load(sql);
+        const rows = await db.query(sql);
         return JSON.parse(JSON.stringify(rows));
     },
     getSipAccountByUserId: async(uid) => {
