@@ -74,10 +74,10 @@ var addEvent = function(UA) {
                 //     viewController.callend(totalSeconds, number);
             }
             var uuid = session._ua._transport.calluuid;
+            console.log(session._ua)
             if (uuid != "" || uuid != null) {
-                getCDRS(uuid);
                 console.log("UUID : " + uuid);
-                console.log('Saving to db');
+                getCDRS(uuid);
             }
             session = null;
         });
@@ -166,7 +166,6 @@ var addEvent = function(UA) {
             // viewController.changeModal(2);
             var user = session._remote_identity._uri._user;
             var incommingNumber = reduceNumberPhone(user);
-            var sessionID = getCookie("PHPSESSID");
             // $.post(rootPath + "/CustomerInfo.php", {
             //         phonenumber: incommingNumber,
             //         PHPSESSID: sessionID
@@ -196,34 +195,22 @@ var addEvent = function(UA) {
 
 function getCDRS(uuid) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", `http://pitelapi02.tel4vn.com/api/v1/cdrs/${uuid}?org_name=tel4vn.com`);
+    var api = `http://pitelapi01.tel4vn.com/api/v1/cdrs/${uuid}?org_name=tel4vn.com`;
+    console.log(api);
+    xhttp.open("GET", api);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var a = JSON.parse(this.response).data;
-            // $.post(rootPath + "/CDRS.php", {
-            //         PHPSESSID: sessionID,
-            //         pbxmanagerid: 4,
-            //         direction: a.direction,
-            //         callstatus: a.call_status,
-            //         hangup_cause: a.hangup_cause,
-            //         starttime: a.start_stamp,
-            //         endtime: a.end_stamp,
-            //         totalduration: a.duration,
-            //         billduration: a.billsec,
-            //         recordingurl: "https://pitel02.tel4vn.com/app/xml_cdr/download.php?id=" + uuid,
-            //         sourceuuid: a.uuid,
-            //         gateway: "gateway",
-            //         customer: a.caller_destination,
-            //         user: a.caller_id_number,
-            //         customernumber: a.caller_destination,
-            //         customertype: "None",
-            //         tags: "None"
-            //     },
-            //     function(data, status) {
-            //         console.log("Data: " + data + "\nStatus: " + status);
-            //     });
-            console.log("Need save to database");
-            console.log(a)
+            var cdrs = JSON.parse(this.response).data;
+            cdrs.recording = 'https://pitel01.tel4vn.com/app/xml_cdr/download.php?id=' + uuid;
+            console.log(cdrs);
+            $.post("/history", cdrs,
+                function(data, status) {
+                    if (data.code != 200) {
+                        alert("Cannot save to database");
+                    } else {
+                        console.log("success");
+                    }
+                });
         };
     };
     xhttp.send();
@@ -368,4 +355,12 @@ function recall(iNumber) {
     //     viewController.connecting(iNumber);
     UA.call("0" + iNumber, options, useAudio);
     //     viewController.showProgress("Calling...");
+}
+
+function itemcall(iNumber, iName) {
+    desUser.number = iNumber;
+    desUser.name = iName;
+    $(".dial-icon").click();
+    $('.phoneString input').val(iNumber);
+    $(".call.action-dig").click();
 }
