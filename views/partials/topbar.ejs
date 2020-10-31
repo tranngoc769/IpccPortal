@@ -5,20 +5,22 @@
         </div>
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
-                <li class="dropdown dropdown-user divided"><a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle" href=""><span class="" style="margin-right: 5px;">Mẫu</span><i class="fa fa-angle-down"></i></a>
+                <!-- <li class="dropdown dropdown-user divided"><a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle" href=""><span class="" style="margin-right: 5px;">Mẫu</span><i class="fa fa-angle-down"></i></a>
                     <ul class="logout dropdown-menu dropdown-menu-default">
                         <li><a>Nhãn cuộc gọi</a></li>
                         <li><a>SMS</a></li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="dropdown dropdown-user divided">
                     <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle" href="">
                         <div class="inbox-item-img" title="">
-                            <h5 class="avatar">a</h5>
-                        </div><span class="username username-hide-on-mobile">ann</span><i class="fa fa-angle-down"></i></a>
+                            <h5 class="avatar">
+                                <%=username.substring(0, 1); %>
+                            </h5>
+                        </div><span class="username username-hide-on-mobile"><%= username %></span><i class="fa fa-angle-down"></i></a>
                     <ul class="logout dropdown-menu dropdown-menu-default">
                         <li><a>Trang quản lý</a></li>
-                        <li><a>Đăng xuất</a></li>
+                        <li><a href="/signout">Đăng xuất</a></li>
                     </ul>
                 </li>
                 <li class="select-language">
